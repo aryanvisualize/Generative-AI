@@ -29,7 +29,26 @@ parser = PydanticOutputParser(pydantic_object=Movie)
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", """
-Extract movie information from the paragraph.
+You are a movie information extraction system.
+
+Extract ALL the following fields from the given movie paragraph:
+
+- title
+- release_year
+- genre
+- director
+- cast
+- rating
+- summary
+
+IMPORTANT:
+1. You MUST return every field.
+2. The `summary` field is REQUIRED.
+3. If information is not available, use null for optional fields.
+4. `genre` and `cast` must always be arrays.
+5. Do not add any extra fields.
+6. Follow these format instructions exactly:
+
 {format_instructions}
 """),
     ("human", "{paragraph}")
