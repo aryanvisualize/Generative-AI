@@ -1,80 +1,122 @@
 # ==========================================
+
 # LangChain
+
 # ==========================================
+
 langchain
 langchain-core
 langchain-community
+langchain-text-splitters
 
 # ==========================================
+
 # LLM Providers
+
 # ==========================================
 
 # OpenAI
+
 langchain-openai
 openai
 
 # Groq
+
 langchain-groq
 groq
 
 # Google Gemini
+
 langchain-google-genai
 google-genai
 
 # Mistral
+
 langchain-mistralai
 mistralai
 
 # ==========================================
+
 # Hugging Face
+
 # ==========================================
+
 langchain-huggingface
 huggingface-hub
 sentence-transformers
 transformers
 
 # ==========================================
+
 # RAG - Document Loaders & Processing
+
 # ==========================================
 
 # PDF
+
 pypdf
 
 # Word Documents
+
 python-docx
 
 # Excel
+
 openpyxl
 
 # HTML / Web
+
 beautifulsoup4
 
 # ==========================================
+
 # Vector Databases
+
 # ==========================================
 
 # ChromaDB - Recommended for learning/local RAG
+
 chromadb
 langchain-chroma
 
 # ==========================================
+
 # Environment Variables
+
 # ==========================================
+
 python-dotenv
 
 # ==========================================
-# Jupyter / Development
+
+# Web Application
+
 # ==========================================
+
+streamlit
+
+# ==========================================
+
+# Jupyter / Development
+
+# ==========================================
+
 jupyter
 ipykernel
 
 # ==========================================
+
 # HTTP / API
+
 # ==========================================
+
 requests
 
 # ==========================================
+
 # Optional - Numerical/Data Processing
+
 # ==========================================
+
 numpy
 pandas

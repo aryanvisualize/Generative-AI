@@ -6,27 +6,33 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma 
-from dotenv import load_dotenv
+from langchain_community.vectorstores import Chroma
 
-load_dotenv()
 
-data = PyPDFLoader("RAG-Project/document-loader/DDIA.pdf")
-docs = data.load()
+def create_vectorstore(pdf_path, persist_directory="chroma_db"):
 
-splitter = RecursiveCharacterTextSplitter(
-    chunk_size = 1000,
-    chunk_overlap = 200
-)
+    # Load PDF
+    loader = PyPDFLoader(pdf_path)
+    docs = loader.load()
 
-chunks = splitter.split_documents(docs)
+    # Split into chunks
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
 
-embedding_model = HuggingFaceEmbeddings(
-    model="sentence-transformers/all-MiniLM-L6-v2"
-)
+    chunks = splitter.split_documents(docs)
 
-vectorstore = Chroma.from_documents(
-    documents= chunks,
-    embedding=embedding_model,
-    persist_directory="chroma_db"
-)
+    # Create embeddings
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
+    # Store in ChromaDB
+    vectorstore = Chroma.from_documents(
+        documents=chunks,
+        embedding=embedding_model,
+        persist_directory=persist_directory
+    )
+
+    return vectorstore, len(docs), len(chunks)
