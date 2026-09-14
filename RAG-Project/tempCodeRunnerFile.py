@@ -62,12 +62,12 @@ while True :
     docs = retriever.invoke(query)
 
     context = "\n\n".join(
-        [doc.page_content for doc in docs]
+        [docs.page_context for doc in docs]
     )
 
     final_prompt = prompt.invoke({
-        "context": context,
-        "question": query
+        "Context" : context,
+        "Question" : query
     })
 
     response = llm.invoke(final_prompt)
